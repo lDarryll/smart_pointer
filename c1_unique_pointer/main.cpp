@@ -20,6 +20,8 @@ void do_with_cat_pass_ref(std::unique_ptr<Cat> &c)
 std::unique_ptr<Cat> get_unique_ptr()
 {
     std::unique_ptr<Cat> p_dog = std::make_unique<Cat>("Local cat");
+    cout << "unique address1 : " <<  p_dog.get() << endl;
+    cout << "unique address2 : " <<  &p_dog << endl;
     return p_dog;
 }
 
@@ -33,12 +35,15 @@ int main()
     // // make_unique
     // do_with_cat_pass_value(std::make_unique<Cat>());
 
-    // 2. pass ref
-    // 不加const
-    std::unique_ptr<Cat> c2 = make_unique<Cat>("f2");
-    do_with_cat_pass_ref(c2);
-    // c2->cat_info();
-    cout << "address : " << c2.get() <<endl;
+    // // 2. pass ref
+    // // 不加const
+    // std::unique_ptr<Cat> c2 = make_unique<Cat>("f2");
+    // do_with_cat_pass_ref(c2);
+    // // c2->cat_info();
+    // cout << "address : " << c2.get() <<endl;
+
+    // 链式
+    get_unique_ptr()->cat_info();
 
     cout << "--------------------------" << endl;
 
